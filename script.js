@@ -1,23 +1,51 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {  
-    event.preventDefault();  
 
-    const firstName = document.getElementById('firstName').value.trim();  
-    const lastName = document.getElementById('lastName').value.trim();  
-    const email = document.getElementById('email').value.trim();  
-    const queryType = document.getElementById('queryType').value;  
+const form = document.getElementById("contactForm");  
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
+const hideError = (errorSpan) => {  
+    errorSpan.style.display = 'none';  
+};  
 
-    if (!firstName || !lastName || !email || !queryType) {  
-        alert("لطفاً تمام فیلدها را پر کنید.");  
-        return;  
+form.addEventListener("submit", function(event) {  
+    event.preventDefault(); 
+
+    const firstName = document.getElementById("firstName").value.trim();  
+    const lastName = document.getElementById("lastName").value.trim();  
+    const email = document.getElementById("email").value.trim();   
+
+    let formIsValid = true;  
+
+ 
+    if (!firstName) {  
+        document.getElementById("firstNameError").style.display = 'block';  
+        formIsValid = false;  
+    } else {  
+        hideError(document.getElementById("firstNameError"));  
     }  
 
-    if (!emailPattern.test(email)) {  
-        alert("لطفاً یک آدرس ایمیل معتبر وارد کنید.");  
-        return;  
+    if (!lastName) {  
+        document.getElementById("lastNameError").style.display = 'block';  
+        formIsValid = false;  
+    } else {  
+        hideError(document.getElementById("lastNameError"));  
     }  
 
-    document.getElementById('successMessage').classList.remove('hidden');  
-    document.getElementById('contactForm').reset();  
-});
+    if (!email) {  
+        document.getElementById("emailError").style.display = 'block';  
+        formIsValid = false;  
+    } else {  
+        hideError(document.getElementById("emailError"));  
+    }   
+    if (!formIsValid) {  
+        return; 
+    } else {  
+        const successMessage = document.getElementById("successMessage");  
+        successMessage.style.display = 'block';  
+ 
+        setTimeout(function() {  
+            successMessage.style.display = 'none';  
+        }, 3000);
+ 
+        form.reset();   
+        document.querySelectorAll('.error').forEach(span => span.style.display = 'none'); 
+    }  
+});  
