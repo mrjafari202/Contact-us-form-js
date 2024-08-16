@@ -11,6 +11,7 @@ form.addEventListener("submit", function(event) {
     const firstName = document.getElementById("firstName").value.trim();  
     const lastName = document.getElementById("lastName").value.trim();  
     const email = document.getElementById("email").value.trim();   
+    const textQustion = document.getElementById("textQustion").value;   
 
     let formIsValid = true;  
 
@@ -34,6 +35,12 @@ form.addEventListener("submit", function(event) {
         formIsValid = false;  
     } else {  
         hideError(document.getElementById("emailError"));  
+    }   
+    if (!textQustion) {  
+        document.getElementById("textQustionError").style.display = 'block';  
+        formIsValid = false;  
+    } else {  
+        hideError(document.getElementById("textQustionError"));  
     }   
     if (!formIsValid) {  
         return; 

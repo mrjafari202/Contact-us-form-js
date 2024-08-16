@@ -42,6 +42,11 @@
                     </div>  
                 </div>  
             </div>  
+            <div class="pb-4 flex flex-col gap-2">
+                <label class="block text-sm font-medium text-gray-700">متن نامه</label> 
+                <textarea name="textQustion" id="textQustion" class="w-full border border-gray-300 rounded-md outline-none px-2 py-1"></textarea>
+                <span class="error" id="textQustionError" style="color: red; display: none;">این فیلد ضروری است.</span> 
+            </div>
             <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">ارسال</button>  
         </form>  
         <div id="successMessage" class="pt-4 text-green-500 hidden">فرم با موفقیت ارسال شد</div>
